@@ -17,6 +17,7 @@ export default async function handler(req, res) {
       let api = new ChatGPTAPI({
         apiKey: key
       })
+      question = question + '（后面仅仅与返回格式相关：如果回答结果涉及到代码，请以```包裹。）'
       let gptanswer = await api.sendMessage(question)
       res.send({"res":gptanswer.text})
     }catch{
